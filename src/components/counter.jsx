@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Counter extends Component {
 
     state = {
-        count: 4,
+        count: 0,
         tags: ['tag 1', 'tag 2', 'tag 3']
     };
 
@@ -18,7 +18,7 @@ class Counter extends Component {
     // }
 
     handleIncrement = () =>  {
-        console.log("Increment clicked", this.state.count)
+        this.setState({ count: this.state.count + 1 })
     }
 
     render() {
@@ -28,7 +28,7 @@ class Counter extends Component {
 
                 <span style={this.style} className={this.getBadgeClasses()}>{this.formatCount()}</span>
 
-                <button onDoubleClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
+                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
         </React.Fragment>
         );
     }
@@ -36,7 +36,18 @@ class Counter extends Component {
     // Dynamic styling
     getBadgeClasses() {
         let classes = "badge m-3 badge-";
-        classes += (this.state.count < 5) ? "warning" : "success";
+
+        if (this.state.count === 0) {
+            classes += "danger"
+          } else if (this.state.count < 5) {
+            classes += "warning"
+          } else if (this.state.count <10) {
+            classes += "info"
+        }
+        else {
+            classes += "success"
+        }
+        // classes += (this.state.count < 5) ? "warning" : "success";
         return classes;
     }
 
