@@ -16,11 +16,13 @@ class Counter extends Component {
   //     this.handleIncrement = this.handleIncrement.bind(this);
   // }
 
-  handleIncrement = () => {
+    handleIncrement = id => {
+    console.log(id)
     this.setState({ count: this.state.count + 1 });
   };
-
-  handleDecrement = () => {
+    
+    handleDecrement = id => {
+    console.log(id)
     this.setState({ count: this.state.count - 1 });
   };
 
@@ -36,17 +38,19 @@ class Counter extends Component {
         </span>
 
         <button
-          onClick={this.handleIncrement}
+                onClick={() => 
+                    this.handleIncrement({ id: 1 })
+                }
           className={this.getIncrementButtonclasses()}
         >
-          Increment
+          +
         </button>
 
         <button
-          onClick={this.handleDecrement}
+          onClick={ () => this.handleDecrement({id:2})}
           className={this.getDecrementButtonclasses()}
         >
-          Decrement
+          -
         </button>
       </React.Fragment>
     );
