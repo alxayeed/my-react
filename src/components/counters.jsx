@@ -16,12 +16,15 @@ class Counters extends Component {
     textAlign: "center",
   };
   render() {
+    
     return (
       <React.Fragment>
         <h4 style={this.titleStyle}>Hello Al!</h4>
         {/* array of 4 components */}
         {this.state.counters.map((counter) => (
-          <Counter key={counter.id} value={counter.value}/>
+          <Counter key={counter.id} value={counter.value}>
+            <h4>Counter {counter.id}</h4>
+          </Counter>
         ))}
       </React.Fragment>
     );
