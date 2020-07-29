@@ -2,113 +2,34 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
-    tags: ["tag 1", "tag 2", "tag 3"],
+    value: this.props.value,
   };
 
-  style = {
-    fontSize: 20,
-    fontWeight: "bold",
+  handleIncrement = () => {
+    this.setState({ value: this.state.value + 1 });
   };
+    render() {
 
-  // constructor() {
-  //     super()
-  //     this.handleIncrement = this.handleIncrement.bind(this);
-  // }
-
-    handleIncrement = id => {
-    console.log(id)
-    this.setState({ count: this.state.count + 1 });
-  };
-    
-    handleDecrement = id => {
-    console.log(id)
-    this.setState({ count: this.state.count - 1 });
-  };
-
-  render() {
     return (
-      <React.Fragment>
-        <h4 style={{ backgroundColor: "#aaa", textAlign: "center" }}>
-          Hello Al!
-        </h4>
-
-        <span style={this.style} className={this.getBadgeClasses()}>
-          {this.formatCount()}
-        </span>
-
-        <button
-                onClick={() => 
-                    this.handleIncrement({ id: 1 })
-                }
-          className={this.getIncrementButtonclasses()}
-        >
-          +
+      <div>
+        <span className={this.getBadgeClasses()}>{this.getCount()}</span>
+        <button onClick={this.handleIncrement} className={"btn btn-info m-1"}>
+          Increment
         </button>
-
-        <button
-          onClick={ () => this.handleDecrement({id:2})}
-          className={this.getDecrementButtonclasses()}
-        >
-          -
-        </button>
-      </React.Fragment>
+      </div>
     );
   }
 
-  // Dynamic styling
   getBadgeClasses() {
     let classes = "badge m-1 badge-";
-
-    if (this.state.count < 3) {
-      classes += "danger";
-    } else if (this.state.count < 5) {
-      classes += "warning";
-    } else if (this.state.count < 10) {
-      classes += "info";
-    } else {
-      classes += "success";
-    }
-    // classes += (this.state.count < 5) ? "warning" : "success";
-    return classes;
-  }
-
-  getIncrementButtonclasses() {
-    let classes = "btn btn-sm m-1 btn-";
-
-    if (this.state.count < 3) {
-      classes += "danger";
-    } else if (this.state.count < 5) {
-      classes += "warning";
-    } else if (this.state.count < 10) {
-      classes += "info";
-    } else {
-      classes += "success";
-    }
+    classes += "warning";
 
     return classes;
   }
-    
-  getDecrementButtonclasses() {
-    let classes = "btn btn-sm m-1 btn-";
 
-    if (this.state.count < 3) {
-      classes += "success";
-    } else if (this.state.count < 5) {
-      classes += "info";
-    } else if (this.state.count < 10) {
-      classes += "warning";
-    } else {
-      classes += "danger";
-    }
-
-    return classes;
-    }
-
-
-  formatCount() {
-    const { count } = this.state;
-    return count === 0 ? 0 : count;
+  getCount() {
+    const value = this.state.value;
+    return value === 0 ? "Zero" : value;
   }
 }
 
