@@ -4,6 +4,7 @@ class Counter extends Component {
 
     state = {
         count: 4,
+        tags: ['tag 1', 'tag 2', 'tag 3']
     };
 
     style = {
@@ -21,11 +22,16 @@ class Counter extends Component {
                 <span style={this.style} className={this.getBadgeClasses()}>{this.formatCount()}</span>
 
                 {/* style 3 - as a class (RECOMMENDED) */}
-            <button className="btn btn-secondary btn-sm">Increment</button>
+                <button className="btn btn-secondary btn-sm">Increment</button>
+
+                {/* List */}
+                <ul>
+                    {this.state.tags.map(tag => <li key={tag}>{tag}</li>)}
+                </ul>
         </React.Fragment>
         );
     }
-    
+
     // Dynamic styling
     getBadgeClasses() {
         let classes = "badge m-3 badge-";
