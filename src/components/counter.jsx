@@ -15,19 +15,11 @@ class Counter extends Component {
     render() {
         return (
             <React.Fragment>
-                {/* style 1-as a variable */}
                 <h4 style={{ backgroundColor: '#aaa', textAlign: "center" }}>Hello Al!</h4>
 
-                {/* style 2 - as property */}
                 <span style={this.style} className={this.getBadgeClasses()}>{this.formatCount()}</span>
 
-                {/* style 3 - as a class (RECOMMENDED) */}
-                <button className="btn btn-secondary btn-sm">Increment</button>
-
-                {/* Rendering List*/}
-                <ul>
-                    {this.state.tags.map(tag => <li key={tag}>{tag}</li>)}
-                </ul>
+                <button onDoubleClick={this.incrementClicked} className="btn btn-secondary btn-sm">Increment</button>
         </React.Fragment>
         );
     }
@@ -42,6 +34,10 @@ class Counter extends Component {
     formatCount() {
         const { count } = this.state
         return count === 0 ? 'Zero ' : count;
+    }
+
+    incrementClicked() {
+        console.log("Increment clicked")
     }
 }
 
