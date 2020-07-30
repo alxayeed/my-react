@@ -13,6 +13,15 @@ class App extends Component {
     ],
   };
 
+  constructor(props) {
+    super(props);
+    console.log(" App Counstructor");
+  }
+
+  componentDidMount() {
+    console.log("App mounted");
+  }
+
   titleStyle = {
     backgroundColor: "#aaa",
     textAlign: "center",
@@ -41,6 +50,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("App Rendered");
     return (
       <React.Fragment>
         <h4 style={{ backgroundColor: "#aaa", textAlign: "center" }}>
