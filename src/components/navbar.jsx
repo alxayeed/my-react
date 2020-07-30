@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 
-class Navbar extends Component {
-  render() {
-    return (
-      <nav className="navbar navbar-light bg-light">
-        <span className="navbar-brand mb-0 h1">{this.props.totalCounters}</span>
-      </nav>
-    );
-  }
-}
+//stateless Fucntional Component
 
-export default Navbar;
+// snipet - sfc
+const navBar = (props) => {
+  return (
+    <nav className="navbar navbar-light bg-light">
+      <span className="navbar-brand mb-0 h1">{props.totalCounters}</span>
+    </nav>
+  );
+};
+
+export default navBar;
