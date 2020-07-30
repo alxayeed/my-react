@@ -40,7 +40,6 @@ class Counters extends Component {
   render() {
     return (
       <React.Fragment>
-        <h4 style={this.titleStyle}>Hello Al!</h4>
         <button
           onClick={this.handleReset}
           className="btn btn-primary btn-sm n-2"
